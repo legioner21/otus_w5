@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: legioner4/otis-work:4.0
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+ingress:
+  className: "nginx"
+
+grafana:
+  name: "prom-grafana"
+
+prometheus:
+  name: "prom-kube-prometheus-stack-prometheus"
