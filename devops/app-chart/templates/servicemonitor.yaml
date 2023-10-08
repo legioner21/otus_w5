@@ -5,13 +5,11 @@ metadata:
   labels:
     {{- include "app-chart.labels" . | nindent 4 }}
 spec:
-  jobLabel: {{ include "app-chart.fullname" . }}
-  namespaceSelector:
-    {{- include "app-chart.selectorLabels" . | nindent 4 }}
   selector:
     matchLabels:
       {{- include "app-chart.selectorLabels" . | nindent 6 }}
+  namespaceSelector:
+    any: true
   endpoints:
-  - interval: 15s
-    targetPort: 8000
+  - interval: 10s
     path: /metrics
