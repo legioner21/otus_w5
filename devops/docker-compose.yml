@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: ./devops/Dockerfile
+    container_name: otus-app
+    env_file: .env
+    ports:
+      - 8000:8000
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+
+  grafana:
+    image: grafana/grafana:latest
+    user: "472"
+    container_name: grafana
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=pass@123
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./grafana_storage:/var/lib/grafana
