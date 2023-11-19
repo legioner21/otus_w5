@@ -3,7 +3,7 @@ replicaCount: 1
 fullnameOverride: "auth"
 
 image:
-  repository: legioner4/otis-work-auth:5.2
+  repository: legioner4/otis-work-auth:5.3
 
 service:
   type: NodePort

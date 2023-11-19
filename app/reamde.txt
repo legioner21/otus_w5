@@ -1,2 +1,2 @@
-1. docker build --platform linux/amd64 -t legioner4/otis-work-app:5.2 -f Dockerfile .
+1. docker build --platform linux/amd64 -t legioner4/otis-work-app:5.3 -f Dockerfile .
 2. push docker image to https://hub.docker.com/

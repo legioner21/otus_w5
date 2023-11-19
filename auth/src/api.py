@@ -93,6 +93,11 @@ def get_user_refresh_token(current_user=Depends(get_user_by_token)):
     return create_access_token(current_user.username)
 
 
+@user_router.get("/signin/", summary="signin user")
+def signin():
+    return {"message": "Please go to login and provide Login/Password"}
+
+
 @user_router.get(
     "/auth/",
     summary="auth user",

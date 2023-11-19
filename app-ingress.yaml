@@ -4,7 +4,7 @@ metadata:
   name: app
   annotations:
     nginx.ingress.kubernetes.io/auth-url: "http://arch.homework/api/v1/user/auth/"
-    nginx.ingress.kubernetes.io/auth-signin: "http://arch.homework/login"
+    nginx.ingress.kubernetes.io/auth-signin: "http://arch.homework/api/v1/user/signin/"
     nginx.ingress.kubernetes.io/auth-response-headers: "x-userid,x-username,x-email,x-first-name,x-last-name"
 spec:
   ingressClassName: nginx

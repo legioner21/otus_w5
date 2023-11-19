@@ -47,10 +47,11 @@ spec:
           - sh
           - "-c"
           - |
-            psql DATABASE_URL <<'EOF'
+            psql $DATABASE_URL <<'EOF'
               drop table if exists user_profile;
               create table user_profile (
-                  id integer primary key,
+                  id serial primary key,
+                  user_id integer,
                   avatar varchar,
                   age integer
               );

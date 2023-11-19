@@ -9,6 +9,7 @@ class UpdateUserDto(BaseModel):
 class UserProfileBase(BaseModel):
     avatar: str
     age: int
+    user_id: int
 
 
 class UserProfileDto(UserProfileBase):

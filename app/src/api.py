@@ -26,7 +26,7 @@ def me(
             detail="Not authenticated",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    return service.get_user_by_id(db, x_userid)
+    return service.get_user_by_user_id(db, x_userid)
 
 
 
@@ -48,12 +48,10 @@ def update_me(
             detail="Not authenticated",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    user = service.get_user_by_id(db, x_userid)
+    user = service.get_user_by_user_id(db, x_userid)
     if not user:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-        )
-    return service.update_user_by_id(db, x_userid, user_dto)
+        return service.create_user(db, x_userid, user_dto)
+    return service.update_user_by_user_id(db, x_userid, user_dto)
 
 
 api_router = APIRouter()
