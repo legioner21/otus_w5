@@ -1,0 +1,29 @@
+replicaCount: 1
+
+fullnameOverride: "auth"
+
+image:
+  repository: legioner4/otis-work-auth:5.2
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 8000
+
+
+postgresql:
+  enabled: true
+  postgresqlUsername: authuser
+  postgresqlPassword: authpasswd
+  postgresqlDatabase: authdb
+  persistence:
+    size: 0.1Gi
+  service:
+    port: "5432"
+
+
+ingress:
+  enabled: false
+  hosts:
+    - host: arch.homework
+      paths: ["/auth"]

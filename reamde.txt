@@ -1,0 +1,15 @@
+1. app readme.txt
+2. auth readme.txt
+
+3. minikube start
+4. minikube dashboard
+5. minikube addons  enable ingress
+6. minikube ip. записываем в hosts arch.homework полученный ip
+7. helm install postgresql oci://registry-1.docker.io/bitnamicharts/postgresql
+8. helm dependency build app/app-chart
+9. helm install app-otus5-app ./app/app-chart --debug --wait --timeout 30m --atomic   # helm uninstall app-otus5-app
+10. helm dependency build auth/auth-chart
+11. helm install app-otus5-auth ./auth/auth-chart --debug --wait --timeout 30m --atomic  # helm uninstall app-otus5-auth
+12. kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+13. kubectl apply -f auth-ingress.yaml
+14. kubectl apply -f app-ingress.yaml
